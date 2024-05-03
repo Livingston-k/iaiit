@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand pr-0 navbar-dark border-bottom-2"
+<div class="navbar navbar-expand pr-0 navbar-dark border-bottom-2 fixed"
         id="default-navbar"
         data-primary>
 
@@ -196,14 +196,15 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header"><strong>Account</strong></div>
-                <a class="dropdown-item"
-                    href="edit-account.html">Edit Account</a>
-                <a class="dropdown-item"
-                    href="billing.html">Billing</a>
-                <a class="dropdown-item"
-                    href="billing-history.html">Payments</a>
-                <a class="dropdown-item"
-                    href="login.html">Logout</a>
+                <a class="dropdown-item" href="edit-account.html">Edit Account</a>
+                <a class="dropdown-item" href="billing.html">Billing</a>
+                <a class="dropdown-item" href="billing-history.html">Payments</a>
+                <a class="dropdown-item" href="route('logout')" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                <form method="POST" id="logout-form" action="{{ route('logout') }}">
+                    @csrf
+                </form>
             </div>
         </div>
     </div>

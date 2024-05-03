@@ -23,7 +23,7 @@
         </div>
         <ul class="sidebar-menu">
           <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="{{ route('instructor') }}">
+            <a class="sidebar-menu-button" href="{{ route('admin') }}">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                 >school</span
@@ -32,7 +32,7 @@
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="{{ route('instructor.courses.index') }}">
+            <a class="sidebar-menu-button" href="#">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                 >import_contacts</span
@@ -41,7 +41,7 @@
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="{{ route('instructor.quizzes.index') }}">
+            <a class="sidebar-menu-button" href="#">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                 >help</span
@@ -50,7 +50,7 @@
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="{{ route('instructor.earnings.index') }}">
+            <a class="sidebar-menu-button" href="#">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                 >trending_up</span

@@ -25,7 +25,7 @@
         <div class="row"
              role="tablist">
             <div class="col-auto">
-                <a href="{{ route('instructors.courses.create') }}"
+                <a href="{{ route('instructor.courses.create') }}"
                    class="btn btn-outline-secondary">Add Course</a>
             </div>
         </div>
