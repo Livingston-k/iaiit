@@ -32,6 +32,15 @@
             </a>
           </li>
           <li class="sidebar-menu-item">
+            <a class="sidebar-menu-button" href="{{ route('admin.languages.index') }}">
+              <span
+                class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
+                >code</span
+              >
+              <span class="sidebar-menu-text">Manage Languages</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
             <a class="sidebar-menu-button" href="#">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"

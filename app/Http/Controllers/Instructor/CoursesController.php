@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Instructor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Course;
 
 class CoursesController extends Controller
 {
@@ -12,7 +14,8 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        return view('instructor.courses.index');
+        $courses = Course::orderBy('created_at', 'DESC')->get();
+        return view('instructor.courses.index')->with('courses', $courses);
     }
 
     /**
@@ -28,7 +31,47 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required'],
+            'caption' => ['required'],
+            'language' => ['required'],
+            'image' => ['required'],
+            'price' => ['required'],
+            'video' => ['required'],
+            'description' => ['required'],
+        ]);
+
+        dd($request);
+
+        
+
+        if (!empty($request->image)) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('uploads/'), $filename);
+            $data['image'] = 'public/uploads/images/' . $filename;
+        }
+
+        if (!empty($request->video)) {
+            $file = $request->file('video');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('uploads/'), $filename);
+            $data['video'] = 'public/uploads/videos/' . $filename;
+        }
+
+        Course::create([
+            'title' => $request->title,
+            'caption' => $request->caption,
+            'language' => $request->language,
+            'image' => $request->image,
+            'price' => $request->price,
+            'video' => $request->video,
+            'added_by' => Auth::user()->id,
+            'description' => $request->description,
+        ]);
+        return redirect()->route('instructor.courses.index')->with('success', 'Course created successfully.');
     }
 
     /**
