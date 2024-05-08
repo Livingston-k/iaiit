@@ -106,67 +106,12 @@
     </div>
 </div>
 
-<div class="" id="course_data">
-    <div class="navbar navbar-light border-0 navbar-expand mt-16pt">
-        <div class="container page__container">
-        </div>
-    </div>
-    <div class="bg-primary pb-lg-64pt py-32pt">
-        <div class="container page__container">
-            <div class="js-player embed-responsive embed-responsive-16by9 mb-32pt">
-                <div class="player embed-responsive-item">
-                    <div class="player__content">
-                        <div class="player__image" style="--player-image: url(https://luma.humatheme.com/public/images/illustration/player.svg)"></div>
-                        <a href="#" class="player__play bg-primary">
-                            <span class="material-icons">play_arrow</span>
-                        </a>
-                    </div>
-                    <div class="player__embed d-none">
-                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-            </div>
 
-            <div class="d-flex flex-wrap align-items-end mb-16pt">
-                <h1 class="text-white flex m-0">Introduction to TypeScript</h1>
-                <p class="h1 text-white-50 font-weight-light m-0">50:13</p>
-            </div>
-        </div>
-    </div>
-    <div class="navbar navbar-expand-sm navbar-dark border-bottom-2 navbar-list p-0 m-0 align-items-center">
+    <img src="{{URL::asset('uploads/'.$course->image)}}" alt="course" class="mt-16pt" style="height: 40vh; object-fit: contain;">
+
+<div class="" id="course_data">
+    <div class="navbar navbar-light border-0 navbar-expand">
         <div class="container page__container">
-            <ul class="nav navbar-nav flex align-items-sm-center">
-                <li class="nav-item navbar-list__item">
-                    <div class="media align-items-center">
-                        <span class="media-left mr-16pt">
-                            <img src="{{ asset('images/people/50/guy-6.jpg') }}" width="40" alt="avatar" class="rounded-circle">
-                        </span>
-                        <div class="media-body">
-                            <a class="card-title m-0"
-                            href="teacher-profile.html">Eddie Bryan</a>
-                            <p class="text-50 lh-1 mb-0">Instructor</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item navbar-list__item">
-                    <i class="material-icons text-muted icon--left">schedule</i>
-                    2h 46m
-                </li>
-                <li class="nav-item navbar-list__item">
-                    <i class="material-icons text-muted icon--left">assessment</i>
-                    Beginner
-                </li>
-                <li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
-                    <div class="rating rating-24">
-                        <div class="rating__item"><i class="material-icons">star</i></div>
-                        <div class="rating__item"><i class="material-icons">star</i></div>
-                        <div class="rating__item"><i class="material-icons">star</i></div>
-                        <div class="rating__item"><i class="material-icons">star</i></div>
-                        <div class="rating__item"><i class="material-icons">star_border</i></div>
-                    </div>
-                    <p class="lh-1 mb-0"><small class="text-muted">20 ratings</small></p>
-                </li>
-            </ul>
         </div>
     </div>
 
