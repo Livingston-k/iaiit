@@ -1,4 +1,4 @@
-@extends('layouts.instructor')
+@extends('layouts.user')
 
 @section('content')
 <div class="pt-32pt">
@@ -9,8 +9,8 @@
                 <h2 class="mb-0">Add Course</h2>
 
                 <ol class="breadcrumb p-0 m-0">
-                    <li class="breadcrumb-item"><a href="{{ route('instructor') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('instructor.courses.index') }}">Courses</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('student') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('student.courses.index') }}">Courses</a></li>
                     <li class="breadcrumb-item active">Add Course</li>
 
                 </ol>

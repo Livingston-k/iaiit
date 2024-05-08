@@ -21,6 +21,12 @@
   <link type="text/css" href="{{ asset('css/quill.css')}}" rel="stylesheet">
   <link type="text/css" href="{{ asset('vendor/select2/select2.min.css')}}" rel="stylesheet">
   <link type="text/css" href="{{ asset('css/select2.css')}}" rel="stylesheet">
+
+  <style>
+    .hideall {
+      display: none !important;
+    }
+  </style>
 </head>
 
 <body id="layout-app">

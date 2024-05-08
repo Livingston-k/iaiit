@@ -24,7 +24,7 @@
             
             <ul class="sidebar-menu">
               <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button" href="student-dashboard.html">
+                <a class="sidebar-menu-button" href="{{ route('student') }}">
                   <span
                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                     >account_box</span
@@ -32,17 +32,8 @@
                   <span class="sidebar-menu-text">Dashboard</span>
                 </a>
               </li>
-              <li class="sidebar-menu-item active">
-                <a class="sidebar-menu-button" href="index.html">
-                  <span
-                    class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
-                    >home</span
-                  >
-                  <span class="sidebar-menu-text">Home</span>
-                </a>
-              </li>
               <li class="sidebar-menu-item">
-                <a class="sidebar-menu-button" href="courses.html">
+                <a class="sidebar-menu-button" href="{{ route('student.courses.index') }}">
                   <span
                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                     >local_library</span
@@ -60,7 +51,7 @@
                   <span class="sidebar-menu-text">My Courses</span>
                 </a>
               </li>
-              <li class="sidebar-menu-item">
+              {{-- <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button" href="student-quiz-results.html">
                   <span
                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
@@ -68,7 +59,7 @@
                   >
                   <span class="sidebar-menu-text">Quizzes</span>
                 </a>
-              </li>
+              </li> --}}
               <li class="sidebar-menu-item">
                 <a
                   class="sidebar-menu-button"
