@@ -23,6 +23,12 @@
   <link type="text/css" href="{{ asset('css/select2.css')}}" rel="stylesheet">
   <link type="text/css" href="{{ asset('css/flatpickr.css')}}" rel="stylesheet">
   <link type="text/css" href="{{ asset('css/flatpickr-airbnb.css')}}" rel="stylesheet">
+
+  <style>
+    .hideall {
+      display: none !important;
+    }
+  </style>
 </head>
 
 <body id="layout-app">

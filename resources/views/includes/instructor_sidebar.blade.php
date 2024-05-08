@@ -40,7 +40,7 @@
               <span class="sidebar-menu-text">Manage Courses</span>
             </a>
           </li>
-          <li class="sidebar-menu-item">
+          {{-- <li class="sidebar-menu-item">
             <a class="sidebar-menu-button" href="{{ route('instructor.quizzes.index') }}">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
@@ -48,7 +48,7 @@
               >
               <span class="sidebar-menu-text">Manage Quizzes</span>
             </a>
-          </li>
+          </li> --}}
           <li class="sidebar-menu-item">
             <a class="sidebar-menu-button" href="{{ route('instructor.earnings.index') }}">
               <span

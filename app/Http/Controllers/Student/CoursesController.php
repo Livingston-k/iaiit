@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Instructor;
+namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class CoursesController extends Controller
     public function index()
     {
         $courses = Course::orderBy('created_at', 'DESC')->get();
-        return view('instructor.courses.index')->with('courses', $courses);
+        return view('student.courses.index')->with('courses', $courses);
     }
 
     /**
@@ -23,7 +23,7 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        return view('instructor.courses.create');
+        return view('student.courses.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class CoursesController extends Controller
             'added_by' => Auth::user()->id,
             'description' => $request->description,
         ]);
-        return redirect()->route('instructor.courses.index')->with('success', 'Course created successfully.');
+        return redirect()->route('student.courses.index')->with('success', 'Course created successfully.');
     }
 
     /**
@@ -71,7 +71,7 @@ class CoursesController extends Controller
     public function show(string $id)
     {
         $course = Course::with(['ratings','likes','comments','reviews','lessons','user'])->find($id);
-        return view('instructor.courses.course')->with('course', $course);
+        return view('student.courses.course')->with('course', $course);
     }
 
     /**

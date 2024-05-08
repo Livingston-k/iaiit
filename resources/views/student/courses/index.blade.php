@@ -1,4 +1,4 @@
-@extends('layouts.instructor')
+@extends('layouts.user')
 
 @section('content')
 <div class="pt-32pt">
@@ -9,7 +9,7 @@
                 <h2 class="mb-0">Courses</h2>
 
                 <ol class="breadcrumb p-0 m-0">
-                    <li class="breadcrumb-item"><a href="{{ route('instructor') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('student') }}">Home</a></li>
 
                     <li class="breadcrumb-item active">
 
@@ -19,13 +19,6 @@
 
                 </ol>
 
-            </div>
-        </div>
-
-        <div class="row"
-             role="tablist">
-            <div class="col-auto">
-                <a href="{{ route('instructor.courses.create') }}" class="btn btn-outline-secondary">Add Course</a>
             </div>
         </div>
 
@@ -41,14 +34,14 @@
 <div class="container page__container page-section">
 
     <div class="page-separator">
-        <div class="page-separator__text">Courses</div>
+        <div class="page-separator__text">Development Courses</div>
     </div>
 
     <div class="row card-group-row">
         @foreach ($courses as $course)
             <div class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
                 <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card">
-                    <a href="{{ route('instructor.courses.show', $course->id) }}" class="card-img-top js-image" data-position="" data-height="140">
+                    <a href="{{ route('student.courses.show', $course->id) }}" class="card-img-top js-image" data-position="" data-height="140">
                         <img src="{{URL::asset('uploads/'.$course->image)}}" alt="course"/>
                     </a>
 
