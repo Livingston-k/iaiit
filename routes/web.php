@@ -21,6 +21,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','admin'])->group(func
 });
 
 Route::prefix('instructor')->name('instructor.')->middleware(['auth','instructor'])->group(function () {
+    Route::get('add_lesson/{id}', [App\Http\Controllers\Instructor\CoursesController::class, 'add_lesson'])->name('add_lesson');
     Route::resource('courses', App\Http\Controllers\Instructor\CoursesController::class);
     Route::resource('quizzes', App\Http\Controllers\Instructor\QuizzesController::class);
     Route::resource('earnings', App\Http\Controllers\Instructor\EarningsController::class);

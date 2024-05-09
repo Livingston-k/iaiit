@@ -75,6 +75,15 @@ class CoursesController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     */
+    public function add_lesson(string $id)
+    {
+        $course = Course::find($id);
+        return view('instructor.courses.add_lesson')->with('course', $course);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
