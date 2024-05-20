@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
+use App\Models\Lesson;
 
 class CoursesController extends Controller
 {
@@ -72,6 +73,49 @@ class CoursesController extends Controller
     {
         $course = Course::with(['ratings','likes','comments','reviews','lessons','user'])->find($id);
         return view('instructor.courses.course')->with('course', $course);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function add_lesson(string $id)
+    {
+        $course = Course::find($id);
+        return view('instructor.courses.add_lesson')->with('course', $course);
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store_lesson(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'title' => ['required'],
+            'course_id' => ['required'],
+            'what_to_learn' => ['required'],
+            'video' => ['required'],
+        ]);
+        
+
+        if (!empty($request->video)) {
+            $file = $request->file('video');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('uploads/'), $filename);
+            $data['video'] = 'public/uploads/courses/lessons/' . $filename;
+            $file_size =File::size($file);
+        }
+
+        Lesson::create([
+            'title' => $request->title,
+            'course_id' => $request->course_id,
+            'video_url' => $filename,
+            'added_by' => Auth::user()->id,
+            'description' => $request->what_to_learn,
+        ]);
+        return $this->show($request->course_id);
     }
 
     /**

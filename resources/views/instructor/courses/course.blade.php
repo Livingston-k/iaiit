@@ -20,7 +20,7 @@
 
         <div class="row" role="tablist">
             <div class="col-auto">
-                <button onclick="add_new_lesson()" class="btn btn-outline-secondary">Add Lesson</button>
+                <a href="{{ route('instructor.add_lesson', $course->id) }}" class="btn btn-outline-secondary">Add Lesson</a>
             </div>
         </div>
 
@@ -32,84 +32,8 @@
 <!-- // END BEFORE Page Content -->
 
 <!-- Page Content -->
-
-<div class="page-section border-bottom-2 mt-16pt hideall" id="add_lesson">
-    <div class="container page__container">
-        <form  method="POST" action="{{ route('instructor.courses.store') }}" enctype="multipart/form-data">
-            <div class="row">
-                @csrf
-                <div class="col-md-6">
-                    <label class="form-label">Course title</label>
-                    <div class="form-group mb-24pt">
-                        <input type="text" name="title" class="form-control form-control" placeholder="Course title">
-                    </div>
-
-
-                    <label class="form-label">Course caption</label>
-                    <div class="form-group mb-24pt">
-                        <input type="text" name="caption" class="form-control form-control" placeholder="Course caption">
-                    </div>
-                </div>
-                <div class="col-md-6">
-
-                    <label class="form-label">Language</label>
-                    <select name="language" class="form-control custom-select mb-24pt">
-                        <option value="vuejs">VueJs</option>
-                        <option value="vuejs">Angular</option>
-                        <option value="vuejs">React</option>
-                    </select>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label class="form-label">Price</label>
-                            <div class="input-group form-inline mb-24pt">
-                                <span class="input-group-prepend"><span class="input-group-text">SHS</span></span>
-                                <input type="text" name="price" class="form-control" placeholder="Price">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Preview Image</label>
-                            <div class="media align-items-center mb-24pt">
-                                {{-- <a href="#" class="media-left mr-16pt">
-                                    <img src="{{ asset('images/people/110/guy-3.jpg') }}" alt="people" width="56" class="rounded-circle" />
-                                </a> --}}
-                                <div class="media-body">
-                                    <div class="custom-file">
-                                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="form-group mb-32pt">
-                        <label class="form-label">Description</label>
-                        {{-- <div style="height: 150px; color:black" class="mb-0" data-toggle="quill" name="description" data-quill-placeholder="Course description">
-                        </div> --}}
-
-                        <textarea style="height: 150px; color:black" class="form-control" name="description"></textarea>
-                    </div>
-
-                    {{-- <div class="form-group mb-32pt">
-                        <label class="form-label">Description</label>
-                        <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
-                    </div> --}}
-
-                    <button type="submit" class="btn btn-outline-secondary mb-24pt mb-sm-0">Add Course</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-
     <img src="{{URL::asset('uploads/'.$course->image)}}" alt="course" class="mt-16pt" style="height: 40vh; object-fit: contain;">
 
-<div class="" id="course_data">
     <div class="navbar navbar-light border-0 navbar-expand">
         <div class="container page__container">
         </div>
@@ -121,6 +45,7 @@
             <div class="page-separator">
                 <div class="page-separator__text">Lessons</div>
             </div>
+
             <div class="row mb-0">
                 <div class="col-lg-12">
 
@@ -136,37 +61,16 @@
                             </a>
                             <div class="accordion__menu collapse show"
                                 id="course-toc-2">
-                                <div class="accordion__menu-link">
-                                    <span class="icon-holder icon-holder--small icon-holder--dark rounded-circle d-inline-flex icon--left">
-                                        <i class="material-icons icon-16pt">check_circle</i>
-                                    </span>
-                                    <a class="flex"
-                                    href="student-lesson.html">Introduction</a>
-                                    <span class="text-muted">8m 42s</span>
-                                </div>
-                                <div class="accordion__menu-link active">
-                                    <span class="icon-holder icon-holder--small icon-holder--primary rounded-circle d-inline-flex icon--left">
-                                        <i class="material-icons icon-16pt">play_circle_outline</i>
-                                    </span>
-                                    <a class="flex"
-                                    href="student-lesson.html">Introduction to TypeScript</a>
-                                    <span class="text-muted">50m 13s</span>
-                                </div>
-                                <div class="accordion__menu-link">
-                                    <span class="icon-holder icon-holder--small icon-holder--light rounded-circle d-inline-flex icon--left">
-                                        <i class="material-icons icon-16pt">lock</i>
-                                    </span>
-                                    <a class="flex"
-                                    href="student-lesson.html">Comparing Angular to AngularJS</a>
-                                    <span class="text-muted">12m 10s</span>
-                                </div>
-                                <div class="accordion__menu-link">
-                                    <span class="icon-holder icon-holder--small icon-holder--light rounded-circle d-inline-flex icon--left">
-                                        <i class="material-icons icon-16pt">hourglass_empty</i>
-                                    </span>
-                                    <a class="flex"
-                                    href="student-take-quiz.html">Quiz: Getting Started With Angular</a>
-                                </div>
+                                @foreach ($course->lessons as $lesson)
+                                    <div class="accordion__menu-link active">
+                                        <span class="icon-holder icon-holder--small icon-holder--primary rounded-circle d-inline-flex icon--left">
+                                            <i class="material-icons icon-16pt">play_circle_outline</i>
+                                        </span>
+                                        <a class="flex"
+                                        href="student-lesson.html">{{ $lesson->title }}</a>
+                                        <span class="text-muted">50m 13s</span>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -184,34 +88,19 @@
                     <div class="page-separator">
                         <div class="page-separator__text">About this course</div>
                     </div>
-                    <p class="text-70">This course will teach you the fundamentals o*f working with Angular 2. You *will learn everything you need to know to create complete applications including: components, services, directives, pipes, routing, HTTP, and even testing.</p>
-                    <p class="text-70 mb-0">This course will teach you the fundamentals o*f working with Angular 2. You *will learn everything you need to know to create complete applications including: components, services, directives, pipes, routing, HTTP, and even testing.</p>
+                    <p class="text-70 mb-0">{{ $course->description }}</p>
                 </div>
                 <div class="col-md-5">
                     <div class="page-separator">
                         <div class="page-separator__text ">What you’ll learn</div>
                     </div>
                     <ul class="list-unstyled">
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Fundamentals of working with Angular</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Create complete Angular applications</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Working with the Angular CLI</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Understanding Dependency Injection</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Testing with Angular</span>
-                        </li>
+                        @foreach ($course->lessons as $lesson)
+                            <li class="d-flex align-items-center">
+                                <span class="material-icons text-50 mr-8pt">check</span>
+                                <span class="text-70">{{ $lesson->description }}</span>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -568,30 +457,4 @@
         </div>
 
     </div>
-</div>
-
-
-<script type='text/javascript'>
-    function preview_image(event)
-    {
-     var reader = new FileReader();
-     reader.onload = function()
-     {
-      var output = document.getElementById('output_image');
-      output.src = reader.result;
-     }
-     reader.readAsDataURL(event.target.files[0]);
-    }
-
-    function add_new_lesson() {
-        $(document).ready(function () { 
-            console.log('clicked');
-            if ($('#add_lesson').hasClass('hideall')) {
-                $('#add_lesson').removeClass('hideall')
-                $('#course_data').addClass('hideall')
-                $('#edit_lesson').addClass('hideall')
-            }
-        })
-    },
-</script>
 @endsection
