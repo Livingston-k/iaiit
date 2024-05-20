@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
+use App\Models\View;
 
 class CoursesController extends Controller
 {
@@ -14,7 +15,7 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('created_at', 'DESC')->get();
+        $courses = Course::withCount(['ratings','likes','comments','reviews','lessons','user'])->orderBy('created_at', 'DESC')->get();
         return view('student.courses.index')->with('courses', $courses);
     }
 
@@ -71,6 +72,7 @@ class CoursesController extends Controller
     public function show(string $id)
     {
         $course = Course::with(['ratings','likes','comments','reviews','lessons','user'])->find($id);
+        View::firstOrCreate(['course_id' => $course->id, 'user_id' => Auth::id()]);
         return view('student.courses.course')->with('course', $course);
     }
 

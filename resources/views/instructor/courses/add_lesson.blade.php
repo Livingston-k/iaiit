@@ -18,11 +18,11 @@
             </div>
         </div>
 
-        <div class="row" role="tablist">
+        {{-- <div class="row" role="tablist">
             <div class="col-auto">
                 <button id="addLesson" class="btn btn-outline-secondary">Add Lesson</button>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 </div>
@@ -35,9 +35,10 @@
 
 <div class="page-section border-bottom-2 mt-16pt">
     <div class="container page__container">
-        <form  method="POST" action="{{ route('instructor.courses.store') }}" enctype="multipart/form-data">
+        <form  method="POST" action="{{ route('instructor.store_lesson') }}" enctype="multipart/form-data">
             <div class="row">
                 @csrf
+                <input type="hidden" name="course_id" class="form-control form-control" value="{{ $course->id }}">
                 <div class="col-md-12">
                     <label class="form-label">Course title</label>
                     <div class="form-group mb-24pt">
@@ -48,17 +49,17 @@
 
                     <label class="form-label">What To learn</label>
                     <div class="form-group mb-24pt">
-                        <input type="text" name="caption" class="form-control form-control" placeholder="Course caption">
+                        <input type="text" name="what_to_learn" class="form-control form-control" placeholder="Course caption">
                     </div>
                 </div>
 
 
                 <div class="col-md-6">
-                    <label class="form-label">Preview Image</label>
+                    <label class="form-label">Video</label>
                     <div class="media align-items-center mb-24pt">
                         <div class="media-body">
                             <div class="custom-file">
-                                <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                                <input type="file" name="video" class="custom-file-input" id="inputGroupFile01">
                                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                             </div>
                         </div>

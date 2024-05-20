@@ -45,6 +45,7 @@
             <div class="page-separator">
                 <div class="page-separator__text">Lessons</div>
             </div>
+
             <div class="row mb-0">
                 <div class="col-lg-12">
 
@@ -60,37 +61,16 @@
                             </a>
                             <div class="accordion__menu collapse show"
                                 id="course-toc-2">
-                                <div class="accordion__menu-link">
-                                    <span class="icon-holder icon-holder--small icon-holder--dark rounded-circle d-inline-flex icon--left">
-                                        <i class="material-icons icon-16pt">check_circle</i>
-                                    </span>
-                                    <a class="flex"
-                                    href="student-lesson.html">Introduction</a>
-                                    <span class="text-muted">8m 42s</span>
-                                </div>
-                                <div class="accordion__menu-link active">
-                                    <span class="icon-holder icon-holder--small icon-holder--primary rounded-circle d-inline-flex icon--left">
-                                        <i class="material-icons icon-16pt">play_circle_outline</i>
-                                    </span>
-                                    <a class="flex"
-                                    href="student-lesson.html">Introduction to TypeScript</a>
-                                    <span class="text-muted">50m 13s</span>
-                                </div>
-                                <div class="accordion__menu-link">
-                                    <span class="icon-holder icon-holder--small icon-holder--light rounded-circle d-inline-flex icon--left">
-                                        <i class="material-icons icon-16pt">lock</i>
-                                    </span>
-                                    <a class="flex"
-                                    href="student-lesson.html">Comparing Angular to AngularJS</a>
-                                    <span class="text-muted">12m 10s</span>
-                                </div>
-                                <div class="accordion__menu-link">
-                                    <span class="icon-holder icon-holder--small icon-holder--light rounded-circle d-inline-flex icon--left">
-                                        <i class="material-icons icon-16pt">hourglass_empty</i>
-                                    </span>
-                                    <a class="flex"
-                                    href="student-take-quiz.html">Quiz: Getting Started With Angular</a>
-                                </div>
+                                @foreach ($course->lessons as $lesson)
+                                    <div class="accordion__menu-link active">
+                                        <span class="icon-holder icon-holder--small icon-holder--primary rounded-circle d-inline-flex icon--left">
+                                            <i class="material-icons icon-16pt">play_circle_outline</i>
+                                        </span>
+                                        <a class="flex"
+                                        href="student-lesson.html">{{ $lesson->title }}</a>
+                                        <span class="text-muted">50m 13s</span>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -108,34 +88,19 @@
                     <div class="page-separator">
                         <div class="page-separator__text">About this course</div>
                     </div>
-                    <p class="text-70">This course will teach you the fundamentals o*f working with Angular 2. You *will learn everything you need to know to create complete applications including: components, services, directives, pipes, routing, HTTP, and even testing.</p>
-                    <p class="text-70 mb-0">This course will teach you the fundamentals o*f working with Angular 2. You *will learn everything you need to know to create complete applications including: components, services, directives, pipes, routing, HTTP, and even testing.</p>
+                    <p class="text-70 mb-0">{{ $course->description }}</p>
                 </div>
                 <div class="col-md-5">
                     <div class="page-separator">
                         <div class="page-separator__text ">What you’ll learn</div>
                     </div>
                     <ul class="list-unstyled">
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Fundamentals of working with Angular</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Create complete Angular applications</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Working with the Angular CLI</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Understanding Dependency Injection</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <span class="material-icons text-50 mr-8pt">check</span>
-                            <span class="text-70">Testing with Angular</span>
-                        </li>
+                        @foreach ($course->lessons as $lesson)
+                            <li class="d-flex align-items-center">
+                                <span class="material-icons text-50 mr-8pt">check</span>
+                                <span class="text-70">{{ $lesson->description }}</span>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

@@ -42,7 +42,7 @@
                 </a>
               </li>
               
-              <li class="sidebar-menu-item">
+              {{-- <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button" href="student-my-courses.html">
                   <span
                     class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
@@ -50,7 +50,7 @@
                   >
                   <span class="sidebar-menu-text">My Courses</span>
                 </a>
-              </li>
+              </li> --}}
               {{-- <li class="sidebar-menu-item">
                 <a class="sidebar-menu-button" href="student-quiz-results.html">
                   <span
@@ -60,7 +60,7 @@
                   <span class="sidebar-menu-text">Quizzes</span>
                 </a>
               </li> --}}
-              <li class="sidebar-menu-item">
+              {{-- <li class="sidebar-menu-item">
                 <a
                   class="sidebar-menu-button"
                   href="student-path-assessment.html"
@@ -71,7 +71,7 @@
                   >
                   <span class="sidebar-menu-text">Skill Assessment</span>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </div>
         </div>
