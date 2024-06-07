@@ -28,16 +28,16 @@
         <a href="{{ route('welcome') }}" class="nav-link">GiiT</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Cources</a>
+        <a href="{{ route('courses') }}" class="nav-link">Cources</a>
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
           <a href="#" class="nav-link">Quizzes</a>
-      </li>
-      <li class="nav-item">
+      </li> --}}
+      {{-- <li class="nav-item">
           <a href="#" class="nav-link">Pricing</a>
-      </li>
+      </li> --}}
       <li class="nav-item">
-          <a href="#" class="nav-link">Instructors</a>
+          <a href="{{ route('instructors') }}" class="nav-link">Instructors</a>
       </li>
     </ul>
 
@@ -50,17 +50,15 @@
                   </a>
               </li>
           @else
-              <li class="nav-item">
-                  <a href="{{ route('login') }}" class="nav-link" data-toggle="tooltip" data-title="Login" data-placement="bottom" data-boundary="window">
-                      <i class="material-icons">lock_open</i>
-                  </a>
-              </li>
+          <li class="nav-item">
+            <a href="{{ route('login') }}" class="btn btn-outline-white">Login</a>
+        </li>
 
-              @if (Route::has('register'))
-                  <li class="nav-item">
-                      <a href="{{ route('register') }}" class="btn btn-outline-white">Get Started</a>
-                  </li>
-              @endif
+          @if (Route::has('register'))
+              <li class="nav-item">
+                  <a href="{{ route('register') }}" class="btn btn-outline-white">Register</a>
+              </li>
+          @endif
           @endauth
       @endif
     </ul>
