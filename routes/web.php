@@ -12,6 +12,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+Route::get('/courses', [App\Http\Controllers\HomeController::class, 'courses'])->name('courses');
+Route::get('/instructors', [App\Http\Controllers\HomeController::class, 'instructors'])->name('instructors');
 Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'user'])->middleware(['auth','verified','user'])->name('student');
 Route::get('admin/dashboard', [App\Http\Controllers\HomeController::class, 'admin'])->middleware(['auth','verified','admin'])->name('admin');
 Route::get('instructor/dashboard', [App\Http\Controllers\HomeController::class, 'instructor'])->middleware(['auth','verified','instructor'])->name('instructor');
