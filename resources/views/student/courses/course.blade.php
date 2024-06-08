@@ -1,29 +1,6 @@
 @extends('layouts.user')
 
 @section('content')
-{{-- <div class="pt-32pt">
-    <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
-        <div class="flex d-flex flex-column flex-sm-row align-items-center">
-
-            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
-                <h2 class="mb-0">Course</h2>
-
-                <ol class="breadcrumb p-0 m-0">
-                    <li class="breadcrumb-item"><a href="{{ route('student') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('student.courses.index') }}">Courses</a></li>
-                    <li class="breadcrumb-item active">Course</li>
-
-                </ol>
-
-            </div>
-        </div>
-
-    </div>
-</div> --}}
-
-<!-- BEFORE Page Content -->
-
-<!-- // END BEFORE Page Content -->
 
 <div class="navbar navbar-light border-0 navbar-expand">
     <div class="container page__container">
@@ -61,12 +38,6 @@
 
         <p class="hero__lead measure-hero-lead text-50 small text-white-50 mb-24pt">{{ $course->lessons[0]->description }}</p>
 
-        {{-- <div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
-            <a href="lesson.html"
-               class="btn btn-outline-white mb-16pt mb-sm-0 mr-sm-16pt">Watch trailer <i class="material-icons icon--right">play_circle_outline</i></a>
-            <a href="pricing.html"
-               class="btn btn-white">Get started</a>
-        </div> --}}
     </div>
 </div>
 
@@ -93,16 +64,6 @@
             <li class="nav-item navbar-list__item">
                 <i class="material-icons text-muted icon--left">assessment</i>
                 Beginner
-            </li>
-            <li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
-                <div class="rating rating-24">
-                    <div class="rating__item"><i class="material-icons">star</i></div>
-                    <div class="rating__item"><i class="material-icons">star</i></div>
-                    <div class="rating__item"><i class="material-icons">star</i></div>
-                    <div class="rating__item"><i class="material-icons">star</i></div>
-                    <div class="rating__item"><i class="material-icons">star_border</i></div>
-                </div>
-                <p class="lh-1 mb-0"><small class="text-muted">20 ratings</small></p>
             </li>
         </ul>
     </div>
@@ -136,7 +97,7 @@
                                         <i class="material-icons icon-16pt">play_circle_outline</i>
                                     </span>
                                     <a class="flex"
-                                    href="student-lesson.html">{{ $lesson->title }}</a>
+                                    href="#">{{ $lesson->title }}</a>
                                     <span class="text-muted">50m 13s</span>
                                 </div>
                             @endforeach
@@ -183,130 +144,24 @@
         <div class="row ">
             <div class="col-md-7">
                 <div class="page-separator">
-                    <div class="page-separator__text">Student Feedback</div>
+                    <div class="page-separator__text">Comments</div>
                 </div>
-                <div class="row mb-32pt">
-                    <div class="col-md-3 mb-32pt mb-md-0">
-                        <div class="display-1">4.7</div>
-                        <div class="rating rating-24">
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star_border</span></span>
-                        </div>
-                        <p class="text-muted mb-0">20 ratings</p>
-                    </div>
-                    <div class="col-md-9">
-
-                        <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="75% rated 5/5" data-placement="top">
-                            <div class="col-md col-sm-6">
-                                <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="75" style="width: 75%" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
-                                <div class="rating">
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="16% rated 4/5" data-placement="top">
-                            <div class="col-md col-sm-6">
-                                <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="16" style="width: 16%" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
-                                <div class="rating">
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="12% rated 3/5" data-placement="top">
-                            <div class="col-md col-sm-6">
-                                <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="12" style="width: 12%" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
-                                <div class="rating">
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="9% rated 2/5" data-placement="top">
-                            <div class="col-md col-sm-6">
-                                <div class="progress"
-                                    style="height: 8px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="9" style="width: 9%" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
-                                <div class="rating">
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row align-items-center mb-8pt" data-toggle="tooltip" data-title="0% rated 0/5" data-placement="top">
-                            <div class="col-md col-sm-6">
-                                <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-auto col-sm-6 d-none d-sm-flex align-items-center">
-                                <div class="rating">
-                                    <span class="rating__item"><span class="material-icons">star</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                    <span class="rating__item"><span class="material-icons">star_border</span></span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
                 <div class="pb-16pt mb-16pt border-bottom row">
                     <div class="col-md-3 mb-16pt mb-md-0">
                         <div class="d-flex">
-                            <a href="student-profile.html"
+                            <a href="#"
                             class="avatar avatar-sm mr-12pt">
                                 <!-- <img src="LB" alt="avatar" class="avatar-img rounded-circle"> -->
                                 <span class="avatar-title rounded-circle">LB</span>
                             </a>
                             <div class="flex">
                                 <p class="small text-muted m-0">2 days ago</p>
-                                <a href="student-profile.html"
+                                <a href="#"
                                 class="card-title">Laza Bogdan</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="rating mb-8pt">
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star_border</span></span>
-                        </div>
                         <p class="text-70 mb-0">A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.</p>
                     </div>
                 </div>
@@ -314,26 +169,19 @@
                 <div class="pb-16pt mb-16pt border-bottom row">
                     <div class="col-md-3 mb-16pt mb-md-0">
                         <div class="d-flex">
-                            <a href="student-profile.html"
+                            <a href="#"
                             class="avatar avatar-sm mr-12pt">
                                 <!-- <img src="UK" alt="avatar" class="avatar-img rounded-circle"> -->
                                 <span class="avatar-title rounded-circle">UK</span>
                             </a>
                             <div class="flex">
                                 <p class="small text-muted m-0">2 days ago</p>
-                                <a href="student-profile.html"
+                                <a href="#"
                                 class="card-title">Umberto Klass</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="rating mb-8pt">
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star_border</span></span>
-                        </div>
                         <p class="text-70 mb-0">This course is absolutely amazing, Bryan goes* out of his way to really expl*ain things clearly I couldn&#39;t be happier, so glad I made this purchase!</p>
                     </div>
                 </div>
@@ -341,50 +189,25 @@
                 <div class="pb-16pt mb-24pt row">
                     <div class="col-md-3 mb-16pt mb-md-0">
                         <div class="d-flex">
-                            <a href="student-profile.html"
+                            <a href="#"
                             class="avatar avatar-sm mr-12pt">
                                 <!-- <img src="AD" alt="avatar" class="avatar-img rounded-circle"> -->
                                 <span class="avatar-title rounded-circle">AD</span>
                             </a>
                             <div class="flex">
                                 <p class="small text-muted m-0">2 days ago</p>
-                                <a href="student-profile.html"
+                                <a href="#"
                                 class="card-title">Adrian Demian</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <div class="rating mb-8pt">
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star</span></span>
-                            <span class="rating__item"><span class="material-icons">star_border</span></span>
-                        </div>
                         <p class="text-70 mb-0">This course is absolutely amazing, Bryan goes* out of his way to really expl*ain things clearly I couldn&#39;t be happier, so glad I made this purchase!</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-5">
-                {{-- <form id="rating" method="post">
-                    <fieldset class="rating">
-                      <input name="rating" type="radio" id="rating5" value="5" on="change:rating.submit">
-                      <label for="rating5" title="5 stars">☆</label>
-                  
-                      <input name="rating" type="radio" id="rating4" value="4" on="change:rating.submit">
-                      <label for="rating4" title="4 stars">☆</label>
-                  
-                      <input name="rating" type="radio" id="rating3" value="3" on="change:rating.submit">
-                      <label for="rating3" title="3 stars">☆</label>
-                  
-                      <input name="rating" type="radio" id="rating2" value="2" on="change:rating.submit" checked="checked">
-                      <label for="rating2" title="2 stars">☆</label>
-                  
-                      <input name="rating" type="radio" id="rating1" value="1" on="change:rating.submit">
-                      <label for="rating1" title="1 stars">☆</label>
-                    </fieldset>
-                  </form> --}}
                 <div class="form-group mb-32pt">
                     <label class="form-label">Review</label>
                     <textarea style="height: 150px; color:black" class="form-control" name="Enter Review"></textarea>
