@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $courses = Course::withCount(['ratings','likes','comments','reviews','lessons','user'])->orderBy('created_at', 'DESC')->get();
+        $courses = Course::withCount(['ratings','likes','comments','reviews','lessons','user'])->orderBy('created_at', 'DESC')->paginate(25);
         return view('welcome')->with('courses', $courses);
     }
 
@@ -37,13 +37,13 @@ class HomeController extends Controller
 
     public function courses()
     {
-        $courses = Course::withCount(['ratings','likes','comments','reviews','lessons','user'])->orderBy('created_at', 'DESC')->get();
+        $courses = Course::withCount(['ratings','likes','comments','reviews','lessons','user'])->orderBy('created_at', 'DESC')->paginate(100);
         return view('courses')->with('courses', $courses);
     }
 
     public function instructors()
     {
-        $instructors = User::where('role', 'instructor')->orderBy('created_at', 'DESC')->get();
+        $instructors = User::where('role', 'instructor')->orderBy('created_at', 'DESC')->paginate(50);
         return view('instructors')->with('instructors', $instructors);
     }
 }
