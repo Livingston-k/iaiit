@@ -1,6 +1,20 @@
 @extends('layouts.instructor')
 
 @section('content')
+
+@php
+    function getInitials($name){
+        $words = explode(' ', $name);
+        $initials = '';
+
+        foreach ($words as $word) {
+            if (!empty($word)) {
+                $initials .= strtoupper($word[0]);
+            }
+        }
+        return $initials;
+    }
+@endphp
 <div class="pt-32pt">
     <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
         <div class="flex d-flex flex-column flex-sm-row align-items-center">
@@ -32,7 +46,7 @@
 <!-- // END BEFORE Page Content -->
 
 <!-- Page Content -->
-    <img src="{{URL::asset('uploads/'.$course->image)}}" alt="course" class="mt-16pt" style="height: 40vh; object-fit: contain;">
+    <img src="{{URL::asset('uploads/courses/'.$course->image)}}" alt="course" class="mt-16pt" style="height: 40vh; object-fit: contain;">
 
     <div class="navbar navbar-light border-0 navbar-expand">
         <div class="container page__container">
@@ -66,9 +80,9 @@
                                         <span class="icon-holder icon-holder--small icon-holder--primary rounded-circle d-inline-flex icon--left">
                                             <i class="material-icons icon-16pt">play_circle_outline</i>
                                         </span>
-                                        <a class="flex"
-                                        href="#">{{ $lesson->title }}</a>
-                                        <span class="text-muted">50m 13s</span>
+                                        <a class="flex" href="#">{{ $lesson->title }}</a>
+                                        {{-- <a href="#" class="btn btn-flush mr-3" type="button"><i class="material-icons">edit</i></a> --}}
+                                        <a href="#" class="btn btn-flush" type="button"><i class="material-icons">delete_forever</i></a>
                                     </div>
                                 @endforeach
                             </div>
@@ -114,65 +128,31 @@
             <div class="page-separator">
                 <div class="page-separator__text">Comments</div>
             </div>
-            <div class="pb-16pt mb-16pt border-bottom row">
-                <div class="col-md-3 mb-16pt mb-md-0">
-                    <div class="d-flex">
-                        <a href="#"
-                        class="avatar avatar-sm mr-12pt">
-                            <span class="avatar-title rounded-circle">LB</span>
-                        </a>
-                        <div class="flex">
-                            <p class="small text-muted m-0">2 days ago</p>
-                            <a href="#"
-                            class="card-title">Laza Bogdan</a>
+            @if (count($course->comments) > 0)
+                    @foreach ($course->comments as $comment)
+                        
+                        <div class="pb-16pt mb-16pt border-bottom row">
+                            <div class="col-md-3 mb-16pt mb-md-0">
+                                <div class="d-flex">
+                                    <a href="#"
+                                    class="avatar avatar-sm mr-12pt">
+                                        <span class="avatar-title rounded-circle">{{ getInitials($comment->user->name) }}</span>
+                                    </a>
+                                    <div class="flex">
+                                        <p class="small text-muted m-0">{{ $comment->created_at->diffForHumans() }}</p>
+                                        <a href="#"
+                                        class="card-title">{{ $comment->user->name }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="text-70 mb-0">{{ $comment->comment }}</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <p class="text-70 mb-0">A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer. Very glad to have taken this course. Thank you Eddie Bryan.</p>
-                </div>
-            </div>
-
-            <div class="pb-16pt mb-16pt border-bottom row">
-                <div class="col-md-3 mb-16pt mb-md-0">
-                    <div class="d-flex">
-                        <a href="#"
-                        class="avatar avatar-sm mr-12pt">
-                            <!-- <img src="UK" alt="avatar" class="avatar-img rounded-circle"> -->
-                            <span class="avatar-title rounded-circle">UK</span>
-                        </a>
-                        <div class="flex">
-                            <p class="small text-muted m-0">2 days ago</p>
-                            <a href="#"
-                            class="card-title">Umberto Klass</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <p class="text-70 mb-0">This course is absolutely amazing, Bryan goes* out of his way to really expl*ain things clearly I couldn&#39;t be happier, so glad I made this purchase!</p>
-                </div>
-            </div>
-
-            <div class="pb-16pt mb-24pt row">
-                <div class="col-md-3 mb-16pt mb-md-0">
-                    <div class="d-flex">
-                        <a href="#"
-                        class="avatar avatar-sm mr-12pt">
-                            <!-- <img src="AD" alt="avatar" class="avatar-img rounded-circle"> -->
-                            <span class="avatar-title rounded-circle">AD</span>
-                        </a>
-                        <div class="flex">
-                            <p class="small text-muted m-0">2 days ago</p>
-                            <a href="#"
-                            class="card-title">Adrian Demian</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <p class="text-70 mb-0">This course is absolutely amazing, Bryan goes* out of his way to really expl*ain things clearly I couldn&#39;t be happier, so glad I made this purchase!</p>
-                </div>
-            </div>
-
+                    @endforeach
+                @else
+                    <p class="text-70 mb-0">Be the first to comment</p>
+                @endif
         </div>
 
     </div>

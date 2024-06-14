@@ -102,7 +102,7 @@
                   <div class="col-md-6 col-lg-4 col-xl-4 card-group-row__col">
                       <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card">
                           <a href="{{ route('student.courses.show', $course->id) }}" class="card-img-top js-image" data-position="" data-height="140">
-                              <img src="{{URL::asset('uploads/'.$course->image)}}" alt="course"/>
+                              <img src="{{URL::asset('uploads/courses/'.$course->image)}}" alt="course"/>
                           </a>
       
                           <div class="card-body flex">

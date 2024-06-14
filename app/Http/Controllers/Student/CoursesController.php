@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\View;
+use App\Models\User;
+use App\Models\Comment;
 
 class CoursesController extends Controller
 {
@@ -72,8 +75,47 @@ class CoursesController extends Controller
     public function show(string $id)
     {
         $course = Course::with(['ratings','likes','comments','reviews','lessons','user'])->find($id);
+        $lesson = $course->lessons[0];
+        View::firstOrCreate(['course_id' => $course->id, 'user_id' => Auth::id()]);
+        return view('student.courses.course')->with([
+            'course' => $course,
+            'lesson' => $lesson,
+        ]);
+    }
+
+    public function change_lesson(string $id)
+    {
+        $lesson = Lesson::find($id);
+        $course = Course::with(['ratings','likes','comments','reviews','lessons','user'])->find($lesson->course_id);
+        View::firstOrCreate(['course_id' => $course->id, 'user_id' => Auth::id()]);
+        return view('student.courses.course')->with([
+            'course' => $course,
+            'lesson' => $lesson,
+        ]);
+    }
+
+    public function comment(Request $request)
+    {
+        $request->validate([
+            'comment' => ['required'],
+            'course' => ['required'],
+        ]);
+
+        Comment::create([
+            'comment' => $request->comment,
+            'course_id' => $request->course,
+            'user_id' => Auth::user()->id,
+        ]);
+        
+        $course = Course::with(['ratings','likes','comments','reviews','lessons','user'])->find($request->course);
         View::firstOrCreate(['course_id' => $course->id, 'user_id' => Auth::id()]);
         return view('student.courses.course')->with('course', $course);
+    }
+    
+    public function instructor_profile(string $id)
+    {
+        $instructor = User::with(['courses'])->find($id);
+        return view('student.instructor_profile')->with('instructor', $instructor);
     }
 
     /**

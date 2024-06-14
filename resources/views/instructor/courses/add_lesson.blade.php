@@ -45,14 +45,19 @@
                         <input type="text" name="title" class="form-control form-control" placeholder="Course title">
                     </div>
                 </div>
-                <div class="col-md-6">
 
-                    <label class="form-label">What To learn</label>
-                    <div class="form-group mb-24pt">
-                        <input type="text" name="what_to_learn" class="form-control form-control" placeholder="Course caption">
+
+                <div class="col-md-6">
+                    <label class="form-label">Thumbnail Image</label>
+                    <div class="media align-items-center mb-24pt">
+                        <div class="media-body">
+                            <div class="custom-file">
+                                <input type="file" name="thumbnail" class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
 
                 <div class="col-md-6">
                     <label class="form-label">Video</label>
@@ -63,6 +68,14 @@
                                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+
+                    <label class="form-label">What To learn</label>
+                    <div class="form-group mb-24pt">
+                        <input type="text" name="what_to_learn" class="form-control form-control" placeholder="Course caption">
                     </div>
                 </div>
 

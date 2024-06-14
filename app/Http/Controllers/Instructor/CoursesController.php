@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Instructor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 use App\Models\Course;
 use App\Models\Lesson;
 
@@ -32,7 +33,6 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'title' => ['required'],
             'caption' => ['required'],
@@ -42,16 +42,12 @@ class CoursesController extends Controller
             'description' => ['required'],
         ]);
 
-        // dd($request);
-
-        
-
         if (!empty($request->image)) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move(public_path('uploads/'), $filename);
-            $data['image'] = 'public/uploads/images/' . $filename;
+            $file->move(public_path('uploads/courses/'), $filename);
+            $data['image'] = 'public/uploads/courses/' . $filename;
         }
 
         Course::create([
@@ -90,28 +86,35 @@ class CoursesController extends Controller
      */
     public function store_lesson(Request $request)
     {
-        // dd($request);
         $request->validate([
             'title' => ['required'],
             'course_id' => ['required'],
             'what_to_learn' => ['required'],
             'video' => ['required'],
+            'thumbnail' => ['required'],
         ]);
-        
 
         if (!empty($request->video)) {
             $file = $request->file('video');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move(public_path('uploads/'), $filename);
-            $data['video'] = 'public/uploads/courses/lessons/' . $filename;
-            $file_size =File::size($file);
+            $file->move(public_path('uploads/lessons/videos'), $filename);
+            $data['video'] = 'public/uploads/lessons/videos/' . $filename;
+        }
+
+        if (!empty($request->thumbnail)) {
+            $image = $request->file('thumbnail');
+            $extension = $image->getClientOriginalExtension();
+            $imageName = time() . '.' . $extension;
+            $image->move(public_path('uploads/lessons/thumbnails'), $imageName);
+            $data['thumbnail'] = 'public/uploads/lessons/thumbnails/' . $imageName;
         }
 
         Lesson::create([
             'title' => $request->title,
             'course_id' => $request->course_id,
             'video_url' => $filename,
+            'thumbnail' => $imageName,
             'added_by' => Auth::user()->id,
             'description' => $request->what_to_learn,
         ]);

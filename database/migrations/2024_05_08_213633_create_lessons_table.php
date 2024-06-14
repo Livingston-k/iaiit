@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('video_url');
+            $table->string('thumbnail');
             $table->text('description');
             $table->unsignedInteger('course_id');
             $table->unsignedInteger('added_by');
