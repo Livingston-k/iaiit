@@ -39,12 +39,12 @@
                 data-title="Messages"
                 data-placement="bottom"
                 data-boundary="window">
-            <button class="nav-link btn-flush dropdown-toggle"
+            {{-- <button class="nav-link btn-flush dropdown-toggle"
                     type="button"
                     data-toggle="dropdown"
                     data-caret="false">
                 <i class="material-icons icon-24pt">mail_outline</i>
-            </button>
+            </button> --}}
             <div class="dropdown-menu dropdown-menu-right">
                 <div data-perfect-scrollbar
                         class="position-relative">
@@ -103,13 +103,13 @@
                 data-title="Notifications"
                 data-placement="bottom"
                 data-boundary="window">
-            <button class="nav-link btn-flush dropdown-toggle"
+            {{-- <button class="nav-link btn-flush dropdown-toggle"
                     type="button"
                     data-toggle="dropdown"
                     data-caret="false">
                 <i class="material-icons">notifications_none</i>
                 <span class="badge badge-notifications badge-accent">2</span>
-            </button>
+            </button> --}}
             <div class="dropdown-menu dropdown-menu-right">
                 <div data-perfect-scrollbar
                         class="position-relative">
@@ -195,10 +195,10 @@
 
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header"><strong>Account</strong></div>
-                <a class="dropdown-item" href="edit-account.html">Edit Account</a>
-                <a class="dropdown-item" href="billing.html">Billing</a>
-                <a class="dropdown-item" href="billing-history.html">Payments</a>
+                {{-- <div class="dropdown-header"><strong>Account</strong></div> --}}
+                {{-- <a class="dropdown-item" href="edit-account.html">Edit Account</a> --}}
+                {{-- <a class="dropdown-item" href="billing.html">Billing</a> --}}
+                {{-- <a class="dropdown-item" href="billing-history.html">Payments</a> --}}
                 <a class="dropdown-item" href="route('logout')" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Logout
                 </a>

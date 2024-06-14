@@ -31,5 +31,9 @@ Route::prefix('instructor')->name('instructor.')->middleware(['auth','instructor
 });
 
 Route::prefix('student')->name('student.')->middleware(['auth','user'])->group(function () {
+    Route::get('/instructor/{id}', [App\Http\Controllers\Student\CoursesController::class, 'instructor_profile'])->name('instructor_profile');
+    Route::post('comment', [App\Http\Controllers\Student\CoursesController::class, 'comment'])->name('comment');
+    Route::get('course/lesson/{id}', [App\Http\Controllers\Student\CoursesController::class, 'change_lesson'])->name('change_lesson');
     Route::resource('courses', App\Http\Controllers\Student\CoursesController::class);
+    
 });

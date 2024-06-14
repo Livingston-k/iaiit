@@ -11,6 +11,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
   <link type="text/css" href="{{ asset('vendor/spinkit.css')}}" rel="stylesheet" />
   <link type="text/css" href="{{ asset('vendor/perfect-scrollbar.css')}}" rel="stylesheet" />
   <link type="text/css" href="{{ asset('css/material-icons.css')}}" rel="stylesheet" />
@@ -81,6 +82,7 @@
   <script src="{{ asset('js/page.instructor-earnings.js')}}"></script>
   <script src="{{ asset('vendor/list.min.js')}}"></script>
   <script src="{{ asset('js/list.js')}}"></script>
+  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
 </body>
 
 </html>

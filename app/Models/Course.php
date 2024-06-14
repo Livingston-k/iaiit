@@ -23,6 +23,10 @@ class Course extends Model
         return $this->hasMany(Rating::class, 'course_id');
     }
 
+    public function views(){
+        return $this->hasMany(View::class, 'course_id');
+    }
+
     public function reviews(){
         return $this->hasMany(Review::class, 'course_id');
     }
@@ -32,6 +36,6 @@ class Course extends Model
     }
 
     public function comments(){
-        return $this->hasMany(Comment::class, 'course_id');
+        return $this->hasMany(Comment::class, 'course_id')->with('user');
     }
 }

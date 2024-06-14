@@ -37,25 +37,25 @@
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                 >code</span
               >
-              <span class="sidebar-menu-text">Manage Languages</span>
+              <span class="sidebar-menu-text">Courses</span>
             </a>
           </li>
           <li class="sidebar-menu-item">
             <a class="sidebar-menu-button" href="#">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
-                >import_contacts</span
+                >person</span
               >
-              <span class="sidebar-menu-text">Manage Courses</span>
+              <span class="sidebar-menu-text">Students</span>
             </a>
           </li>
           <li class="sidebar-menu-item">
             <a class="sidebar-menu-button" href="#">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
-                >help</span
+                >person</span
               >
-              <span class="sidebar-menu-text">Manage Quizzes</span>
+              <span class="sidebar-menu-text">Instructors</span>
             </a>
           </li>
           <li class="sidebar-menu-item">
