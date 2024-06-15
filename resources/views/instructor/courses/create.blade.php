@@ -30,6 +30,25 @@
 <div class="page-section border-bottom-2">
     <div class="container page__container">
         <form  method="POST" action="{{ route('instructor.courses.store') }}" enctype="multipart/form-data">
+            @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-soft-accent alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="d-flex flex-wrap align-items-start">
+                                <div class="mr-8pt">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="flex" style="min-width: 180px">
+                                    <small class="text-white-100">
+                                        {{ $error }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             <div class="row">
                 @csrf
                 <div class="col-md-6">
@@ -47,11 +66,9 @@
                 <div class="col-md-6">
 
                     <label class="form-label">Language</label>
-                    <select name="language" class="form-control custom-select mb-24pt">
-                        <option value="vuejs">VueJs</option>
-                        <option value="vuejs">Angular</option>
-                        <option value="vuejs">React</option>
-                    </select>
+                    <div class="form-group mb-24pt">
+                        <input type="text" name="language" class="form-control form-control" placeholder="Language">
+                    </div>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -65,9 +82,6 @@
                         <div class="col-md-6">
                             <label class="form-label">Preview Image</label>
                             <div class="media align-items-center mb-24pt">
-                                {{-- <a href="#" class="media-left mr-16pt">
-                                    <img src="{{ asset('images/people/110/guy-3.jpg') }}" alt="people" width="56" class="rounded-circle" />
-                                </a> --}}
                                 <div class="media-body">
                                     <div class="custom-file">
                                         <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">

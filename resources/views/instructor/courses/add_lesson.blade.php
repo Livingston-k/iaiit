@@ -36,6 +36,25 @@
 <div class="page-section border-bottom-2 mt-16pt">
     <div class="container page__container">
         <form  method="POST" action="{{ route('instructor.store_lesson') }}" enctype="multipart/form-data">
+            @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-soft-accent alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="d-flex flex-wrap align-items-start">
+                                <div class="mr-8pt">
+                                    <i class="material-icons">access_time</i>
+                                </div>
+                                <div class="flex" style="min-width: 180px">
+                                    <small class="text-white-100">
+                                        {{ $error }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             <div class="row">
                 @csrf
                 <input type="hidden" name="course_id" class="form-control form-control" value="{{ $course->id }}">

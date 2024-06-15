@@ -27,6 +27,12 @@ class UsersController extends Controller
         return view('admin.students.index')->with('students', $students);
     }
 
+    public function student_profile(string $id)
+    {
+        $student = User::where('role', 'user')->paginate(30);
+        return view('admin.student_profile')->with('student', $student);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -36,11 +42,13 @@ class UsersController extends Controller
         return view('admin.instructors.index')->with('instructors', $instructors);
     }
 
-    public function tr_profile(string $id)
+    public function instructor_profile(string $id)
     {
         $instructor = User::with(['courses'])->find($id);
         return view('admin.instructor_profile')->with('instructor', $instructor);
     }
+
+    
 
     /**
      * Show the form for creating a new resource.

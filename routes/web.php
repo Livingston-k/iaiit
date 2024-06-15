@@ -19,6 +19,12 @@ Route::get('admin/dashboard', [App\Http\Controllers\HomeController::class, 'admi
 Route::get('instructor/dashboard', [App\Http\Controllers\HomeController::class, 'instructor'])->middleware(['auth','verified','instructor'])->name('instructor');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth','admin'])->group(function () {
+    Route::get('course/lesson/{id}', [App\Http\Controllers\Admin\CoursesController::class, 'change_lesson'])->name('change_lesson');
+    Route::get('students', [App\Http\Controllers\Admin\UsersController::class, 'students'])->name('students');
+    Route::get('/student/{id}', [App\Http\Controllers\Admin\UsersController::class, 'student_profile'])->name('student_profile');
+    Route::get('instructors', [App\Http\Controllers\Admin\UsersController::class, 'instructors'])->name('instructors');
+    Route::get('/instructor/{id}', [App\Http\Controllers\Admin\UsersController::class, 'instructor_profile'])->name('instructor_profile');
+    Route::resource('courses', App\Http\Controllers\Admin\CoursesController::class);
     Route::resource('languages', App\Http\Controllers\Admin\LanguageController::class);
 });
 
