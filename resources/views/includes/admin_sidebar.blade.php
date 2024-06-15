@@ -32,7 +32,7 @@
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="{{ route('admin.languages.index') }}">
+            <a class="sidebar-menu-button" href="{{ route('admin.courses.index') }}">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                 >code</span
@@ -41,7 +41,7 @@
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="#">
+            <a class="sidebar-menu-button" href="{{ route('admin.students') }}">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                 >person</span
@@ -50,7 +50,7 @@
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="#">
+            <a class="sidebar-menu-button" href="{{ route('admin.instructors') }}">
               <span
                 class="material-icons sidebar-menu-icon sidebar-menu-icon--left"
                 >person</span

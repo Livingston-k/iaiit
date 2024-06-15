@@ -51,7 +51,7 @@ class CoursesController extends Controller
         ]);
     }
 
-    public function change_course_lesson(string $id)
+    public function change_lesson(string $id)
     {
         $lesson = Lesson::find($id);
         $course = Course::with(['ratings','likes','comments','reviews','lessons','user'])->find($lesson->course_id);
