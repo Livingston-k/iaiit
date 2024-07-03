@@ -38,4 +38,8 @@ class Course extends Model
     public function comments(){
         return $this->hasMany(Comment::class, 'course_id')->with('user');
     }
+
+    public function payments(){
+        return $this->hasMany(Payment::class, 'course_id');
+    }
 }

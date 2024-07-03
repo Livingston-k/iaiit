@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-<div class="pt-32pt">
+<div class="pt-32pt mb-24pt">
     <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
         <div class="flex d-flex flex-column flex-sm-row align-items-center">
 
@@ -31,39 +31,45 @@
                 <div class="media-body">
                     <a href="student-course.html" class="card-title text-body mb-0">Processing Paymnent</a>
                     <p class="lh-1 d-flex align-items-center mb-0">
-                        <span class="text-50 small font-weight-bold mr-8pt">hhh</span>
+                        <span class="text-50 small font-weight-bold mr-8pt" id="response">Please wait...</span>
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="page-section border-bottom-2">
-        <div class="container page__container">
-            <form  method="POST" action="{{ route('student.subscribe') }}">
-                <div class="row">
-                    @csrf
-                    <input type="hidden" name="sub_id" id="sub_id" class="form-control" value="{{ $subscribe_id }}">
-                </div>
-            </form>
-        </div>
-    </div>
+    <input type="hidden" name="sub_id" id="sub_id" class="form-control" value="{{ $subscribe_id }}">
+    <input type="hidden" name="sub_id" id="sub_id" class="form-control" value="{{ $lesson_id }}">
 
 
     <script>
         function checkPaymentStatus() {
             let sub_id = document.getElementById("sub_id")
+            let lesson = document.getElementById("lesson_id")
+
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/payment/check_status',
+                url: 'http://127.0.0.1:8000/api/student/payment/check_status',
                 type: 'POST',
-                data: { subscribe_id: sub_id },
+                data: JSON.stringify({ 'subscribe_id': sub_id.value }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
                 success: function(response) {
                     if (response.status === 1) {
-                        console.log("Payment successfull.");
+                        document.getElementById("response").textContent = "Payment successfull.";
+
+                        $.ajax({
+                            url: 'http://127.0.0.1:8000/api/student/course/lesson/'+lesson,
+                            type: 'GET',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            success: function(response) {}
+                        });
+
+
                     } else if (response.status === 0) {
-                        console.log("Please enter pin.");
+                        document.getElementById("response").textContent = "Please enter pin";
                     } else {
-                        console.log("Payment failed.");
+                        document.getElementById("response").textContent = "Payment failed. Please try again later";
                     }
                 },
                 error: function() {

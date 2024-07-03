@@ -134,7 +134,10 @@ class PaymentsController extends Controller
                 'memo' => $array['memo'],
                 'msg' => $array['msg'],
             ]);
-            return view('student.payments.status')->with('subscribe_id', $sub->id);
+
+            $course = Course::with(['lessons'])->find($course_id);
+            $lesson = $course->lessons->first();
+            return view('student.payments.status')->with(['subscribe_id' => $sub->id, 'lesson_id' => $lesson->id]);
             // return response()->json(['message' => 'Check Your phone to confirm transaction', 'id' => $sub->id], 200);
         }
         return response()->json(['message' => 'Can not process payment now, please try again later'], 501);
@@ -171,6 +174,6 @@ class PaymentsController extends Controller
     public function check_status(Request $request)
     {
         $payment = Payment::find($request->subscribe_id);
-        return response()->json(['status'=> $subscribe->confirmed], 200);
+        return response()->json(['status'=> $payment->confirmed], 200);
     }
 }
