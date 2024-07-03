@@ -11,6 +11,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('countries', [CountryController::class, 'index'])->name('index');
+Route::get('subscribe_ipn', [PaymentsController::class, 'processIPN'])->name('processIPN');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 Route::get('/courses', [App\Http\Controllers\HomeController::class, 'courses'])->name('courses');
 Route::get('/instructors', [App\Http\Controllers\HomeController::class, 'instructors'])->name('instructors');
@@ -37,9 +39,12 @@ Route::prefix('instructor')->name('instructor.')->middleware(['auth','instructor
 });
 
 Route::prefix('student')->name('student.')->middleware(['auth','user'])->group(function () {
+    Route::get('/enroll/{id}', [App\Http\Controllers\Student\LessonsController::class, 'enroll'])->name('enroll');
+    Route::get('course/lesson/{id}', [App\Http\Controllers\Student\LessonsController::class, 'change_lesson'])->name('change_lesson');
     Route::get('/instructor/{id}', [App\Http\Controllers\Student\CoursesController::class, 'instructor_profile'])->name('instructor_profile');
     Route::post('comment', [App\Http\Controllers\Student\CoursesController::class, 'comment'])->name('comment');
-    Route::get('course/lesson/{id}', [App\Http\Controllers\Student\CoursesController::class, 'change_lesson'])->name('change_lesson');
     Route::resource('courses', App\Http\Controllers\Student\CoursesController::class);
-    
+    Route::get('/payments', [App\Http\Controllers\Student\PaymentsController::class, 'index'])->name('payments');
+    Route::get('/course/payment/{id}', [App\Http\Controllers\Student\PaymentsController::class, 'course_payment'])->name('course_payment');
+    Route::post('subscribe', [App\Http\Controllers\Student\PaymentsController::class, 'subscribe'])->name('subscribe');
 });
